@@ -101,7 +101,7 @@ body {font-family: Verdana, sans-serif;}
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;
 }
-#clipicon{
+#clipicon , #modaltrig{
     cursor: pointer;
 }
 h6{

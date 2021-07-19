@@ -148,14 +148,27 @@ $('#clipicon').click(function(e){
 });
 
 
-
-
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  });
-
-
-
-
+    
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$('#tasks').DataTable({
+       processing: true,
+       serverSide: true,
+       ajax: {
+        url: "/home",
+        type: 'GET',
+       },
+       columns: [
+                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false,searchable: false},
+                { data: 'name', name: 'name' },
+                { data: 'description', name: 'description' },
+                { data: 'start_date', name: 'start_date' },
+                { data: 'end_date', name: 'end_date' },
+                {data: 'action', name: 'action', orderable: false},
+             ],
+    });
 
 });

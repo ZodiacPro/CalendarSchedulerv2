@@ -48,5 +48,8 @@
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
         <script src="{{ asset('argon') }}/js/dashboard.js"></script>
         <script src="{{ asset('argon') }}/js/moment.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet">
+        <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     </body>
 </html>

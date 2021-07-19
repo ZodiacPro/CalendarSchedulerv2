@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\TaskModel;
+use DataTables;
 
 class HomeController extends Controller
 {
@@ -22,8 +23,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->ajax()) {
+            $data = TaskModel::get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                          
+   
+                           $btn = ' <a href="'.route('deleteTask',$row->id).'" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
+    
+                            return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
 
         $number_of_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
         $timestamp = strtotime(date('Y-m-01'));
@@ -106,5 +122,10 @@ class HomeController extends Controller
 
         return 'success';
 
+    }
+
+    public function delete($id){
+        TaskModel::where('id', $id)->delete();
+        return redirect('home');
     }
 }

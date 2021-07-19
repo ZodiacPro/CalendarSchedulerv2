@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('/getCalendar', 'App\Http\Controllers\HomeController@getCalendar')->name('getCalendar');
 Route::put('/addTask', 'App\Http\Controllers\HomeController@addTask')->name('addTask');
+Route::get('/deleteTask/{id}', 'App\Http\Controllers\HomeController@delete')->name('deleteTask');
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);

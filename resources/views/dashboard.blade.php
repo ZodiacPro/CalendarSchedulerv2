@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('modal.dashboard')
 @section('content')
     @include('layouts.headers.cards')
     
@@ -64,4 +64,7 @@
 
         @include('layouts.footers.auth')
     </div>
+
+
+              
 @endsection

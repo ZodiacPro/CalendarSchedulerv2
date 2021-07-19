@@ -46,7 +46,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-pie"></i>
+                                        <i class="fas fa-chart-pie" id="modaltrig" data-toggle="modal" data-target="#exampleModal"></i>
                                     </div>
                                 </div>
                                 <p class="mt-3 mb-0 text-muted text-sm">
