@@ -66,10 +66,12 @@ class HomeController extends Controller
     }
 
     public function getCalendar(Request $request){
+       
 
         $number_of_days = cal_days_in_month(CAL_GREGORIAN, $request->month, $request->year);
         $timestamp = strtotime(date($request->year.'-'.$request->month.'-01'));
         $firstday = date('l', $timestamp);
+        $date_filter = $request->year.'-'.$request->month.'-';
 
         if($firstday == 'Sunday') $skip = 0;
         elseif($firstday == 'Monday') $skip = 1;
@@ -79,10 +81,10 @@ class HomeController extends Controller
         elseif($firstday == 'Friday') $skip = 5;
         elseif($firstday == 'Saturday') $skip = 6;
 
-        $taskdata = TaskModel::where('start_date' ,'>=', date('Y-m-01'))
-                                ->where('start_date' ,'<=', date('Y-m-'.$number_of_days))
-                                ->orwhere('end_date' ,'>=', date('Y-m-01'))
-                                ->where('end_date' ,'<=', date('Y-m-'.$number_of_days))
+        $taskdata = TaskModel::where('start_date' ,'>=', $date_filter.'01')
+                                ->where('start_date' ,'<=',$date_filter.$number_of_days)
+                                ->orwhere('end_date' ,'>=',$date_filter.'01')
+                                ->where('end_date' ,'<=', $date_filter.$number_of_days)
                                 ->get();
 
         $calData = [

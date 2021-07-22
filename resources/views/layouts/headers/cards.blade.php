@@ -25,7 +25,7 @@
                                             <option @if(date('m') == '12') selected @endif value="12">December</option>
                                         </select>
                                         <br>
-                                        <select class="form-control" class="slctyear" id="slctyear" onchange="yearchange()">
+                                        <select class="form-control" class="slctyear" id="slctyear">
                                             @for($x=2010; $x<= 2050 ; $x++)
                                             <option @if(date('Y') == $x) selected @endif value = "{{$x}}">{{$x}}</option>
                                             @endfor
